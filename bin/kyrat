@@ -8,7 +8,9 @@ GNUBIN="/usr/local/opt/coreutils/libexec/gnubin"
 
 KYRAT_ROOT="$(readlink -f $(dirname $(readlink -f "$0"))/..)"
 
-echo "\$* - $*"
+# for debugging
+#echo "\$* - $*"
+
 # hack to not break `gcssh ... --command=...`, use ssh not kyrat if base64 in command (bash64 is used to create a string from --command=...)
 # not sure if the '|| grep ...' actually works, but doesn't seem to break it
 if grep -q base64 <<< "$@" || grep -qE " --$| -- " <<< "$*"; then
